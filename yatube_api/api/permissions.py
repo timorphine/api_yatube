@@ -5,5 +5,4 @@ from rest_framework.permissions import SAFE_METHODS
 class UserIsAuthorOrReadOnly(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
-        if obj.author == request.user or request.method in SAFE_METHODS:
-            return True
+        return obj.author == request.user or request.method in SAFE_METHODS
